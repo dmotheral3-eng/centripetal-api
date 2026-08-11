@@ -5,7 +5,7 @@
 // The database function on the other side is the perimeter — it decides what
 // an access key may see. This file only forwards.
 
-const UPSTREAM = 'https://iofslupbvedjzmfmkdvx.supabase.co/rest/v1/rpc/fn_cent_get';
+const UPSTREAM = process.env.CUBE_UPSTREAM_URL;
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -62,7 +62,7 @@ module.exports = async function handler(req, res) {
   }
 
   const apikey = process.env.CUBE_ANON_KEY;
-  if (!apikey) {
+  if (!apikey || !UPSTREAM) {
     res.status(500).json({ error: 'door_not_configured' });
     return;
   }
