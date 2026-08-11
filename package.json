@@ -1,0 +1,12 @@
+{
+  "name": "centripetal-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Centripetal retrieve door — branded HTTP entrance to the Centripetal retrieve function.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node --check api/v1/get.js && node --check api/v1/health.js"
+  }
+}
